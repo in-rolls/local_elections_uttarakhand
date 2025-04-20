@@ -26,5 +26,5 @@ final data:
 - [in-rolls/local_elections_kerala](https://github.com/in-rolls/local_elections_kerala) — Kerala Local Government Seat Reservation Data and Winner Attributes
 - [in-rolls/local_elections_up](https://github.com/in-rolls/local_elections_up) — UP Local Election Data --- GP and ULB. Seat reservation, winner, and candidates for some elections
 - [in-rolls/local_elections_bihar](https://github.com/in-rolls/local_elections_bihar) — Candidate Info. + Valid Votes Won by Cands. in the 2016 Bihar Panchayat Elections
+- [in-rolls/parse_unsearchable_rolls](https://github.com/in-rolls/parse_unsearchable_rolls) — Parse Unsearchable Electoral Rolls
 - [in-rolls/secc](https://github.com/in-rolls/secc) — Socio-Economic Caste Census 2011
-- [in-rolls/spousal_age_gap](https://github.com/in-rolls/spousal_age_gap) — Spousal Age Gap in India. Estimate: 80% larger than the US.

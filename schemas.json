@@ -1,0 +1,92 @@
+{
+  "uttarakhand-panchayat-elections-haridwar.csv": {
+    "columns": {
+      "Year": "year",
+      "निर्वाचित पद": "office_raw",
+      "जनपद": "district_raw",
+      "घोषित परिणाम": "declared_results_count_raw",
+      "निर्विरोध निर्वाचित": "unopposed_elected_count_raw",
+      "विकास खण्‍ड": "block_raw",
+      "ग्राम पंचायत": "gram_panchayat_raw",
+      "आरक्षण स्थिति": "reservation_raw",
+      "विजयी प्रत्‍याशी का नाम": "winner_raw",
+      "चुनाव चिन्‍ह": "winner_symbol_raw",
+      "प्राप्‍त मत": "winner_votes_raw",
+      "प्रथम रनर अप प्रत्‍याशी का नाम": "runner_up_raw",
+      "चुनाव चिन्‍ह.1": "runner_up_symbol_raw",
+      "प्राप्‍त मत.1": "runner_up_votes_raw",
+      "मतों का अन्‍तर": "margin_raw",
+      "क्षेत्र पंचायत वाडॅ": "block_ward_raw",
+      "जिला पंचायत वाडॅ": "district_ward_raw",
+      "क्रमांक": "candidate_serial_raw",
+      "अभ्‍यर्थी का नाम": "candidate_raw",
+      "पिता/पति का नाम": "relation_name_raw",
+      "चुनाव चिन्‍ह.2": "candidate_symbol_raw",
+      "प्राप्‍त मत.2": "candidate_votes_raw"
+    },
+    "years": [
+      2010,
+      2015
+    ],
+    "output": "uttarakhand-panchayat-elections-haridwar.parquet"
+  },
+  "uttarakhand-panchayat-elections.csv": {
+    "columns": {
+      "Year": "year",
+      "निर्वाचित पद": "office_raw",
+      "जनपद": "district_raw",
+      "घोषित परिणाम": "declared_results_count_raw",
+      "निर्विरोध निर्वाचित": "unopposed_elected_count_raw",
+      "विकास खण्‍ड": "block_raw",
+      "ग्राम पंचायत": "gram_panchayat_raw",
+      "आरक्षण स्थिति": "reservation_raw",
+      "विजयी प्रत्‍याशी का नाम": "winner_raw",
+      "चुनाव चिन्‍ह": "winner_symbol_raw",
+      "प्राप्‍त मत": "winner_votes_raw",
+      "प्रथम रनर अप प्रत्‍याशी का नाम": "runner_up_raw",
+      "चुनाव चिन्‍ह.1": "runner_up_symbol_raw",
+      "प्राप्‍त मत.1": "runner_up_votes_raw",
+      "मतों का अन्‍तर": "margin_raw",
+      "क्षेत्र पंचायत वाडॅ": "block_ward_raw",
+      "जिला पंचायत वाडॅ": "district_ward_raw",
+      "क्रमांक": "candidate_serial_raw",
+      "अभ्‍यर्थी का नाम": "candidate_raw",
+      "पिता/पति का नाम": "relation_name_raw",
+      "चुनाव चिन्‍ह.2": "candidate_symbol_raw",
+      "प्राप्‍त मत.2": "candidate_votes_raw"
+    },
+    "years": [
+      2008,
+      2014,
+      2019
+    ],
+    "output": "uttarakhand-panchayat-elections.parquet"
+  },
+  "uttarakhand-local-elections.csv": {
+    "columns": {
+      "Year": "year",
+      "District": "district_raw",
+      "NN/NP/NPP Name": "body_name_raw",
+      "Ward Name(Seat Category)": "ward_category_raw",
+      "Winning Candidate (Name-Party-Symbol)": "winner_summary_raw",
+      "First Runner-up Candidate (Name-Party-Symbol)": "runner_up_summary_raw",
+      "Name": "detail_body_name_raw",
+      "Ward": "detail_ward_raw",
+      "Candidate": "candidate_raw",
+      "Party": "party_raw",
+      "Symbol": "symbol_raw",
+      "Votes Secured": "candidate_votes_raw",
+      "Total Votes Polled": "total_votes_polled_raw",
+      "Invalid Votes": "invalid_votes_raw",
+      "Tender Votes": "tender_votes_raw",
+      "Valid Votes": "valid_votes_raw"
+    },
+    "years": [
+      2008,
+      2013,
+      2018,
+      2019
+    ],
+    "output": "uttarakhand-local-elections.parquet"
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "format_version": 1,
+  "column_map_sha256": "7f9cddaf63a055de8cbdc0f43c693693c771d2daf8bc951e5b90db84c93204c9",
+  "files": [
+    {
+      "file": "uttarakhand-panchayat-elections-haridwar.parquet",
+      "source_csv": "uttarakhand-panchayat-elections-haridwar.csv",
+      "source_sha256": "a1575bd1d8acb93ad1dd340a3e90a19b891f12a5f4726ed9e3993107e26799b1",
+      "sha256": "28748644e4e5391bb58bb61748f0e4300edb0414571502b4dfc4762b5aa1fe05",
+      "rows": 10132,
+      "schema": [
+        {
+          "name": "year",
+          "type": "int16",
+          "nullable": true
+        },
+        {
+          "name": "office_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "district_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "declared_results_count_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "unopposed_elected_count_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "block_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "gram_panchayat_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "reservation_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "margin_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "block_ward_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "district_ward_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_serial_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "relation_name_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "source_row",
+          "type": "int32",
+          "nullable": false
+        },
+        {
+          "name": "quality_flags",
+          "type": "list<element: string>",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "file": "uttarakhand-panchayat-elections.parquet",
+      "source_csv": "uttarakhand-panchayat-elections.csv",
+      "source_sha256": "cf95e7c91ed41910c79f596c4634f7e2e67107f047676fb90c5ecdc88decbf21",
+      "sha256": "dcfc03a2345771c8fa8252de37fb750ec46e5245c7f414152b560f8508716172",
+      "rows": 106382,
+      "schema": [
+        {
+          "name": "year",
+          "type": "int16",
+          "nullable": true
+        },
+        {
+          "name": "office_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "district_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "declared_results_count_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "unopposed_elected_count_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "block_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "gram_panchayat_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "reservation_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "margin_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "block_ward_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "district_ward_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_serial_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "relation_name_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "source_row",
+          "type": "int32",
+          "nullable": false
+        },
+        {
+          "name": "quality_flags",
+          "type": "list<element: string>",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "file": "uttarakhand-local-elections.parquet",
+      "source_csv": "uttarakhand-local-elections.csv",
+      "source_sha256": "65297bb4b526fe0f76c31a77898d9efd4c2bb95f106de58ed47ff9c703f6ba31",
+      "sha256": "10d2a3162cb68cffdaa16f8b38aba3c40d44ae87a956fba31e1ecd201ebbe9ed",
+      "rows": 12530,
+      "schema": [
+        {
+          "name": "year",
+          "type": "int16",
+          "nullable": true
+        },
+        {
+          "name": "district_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "body_name_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "ward_category_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "winner_summary_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "runner_up_summary_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "detail_body_name_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "detail_ward_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "party_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "symbol_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "candidate_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "total_votes_polled_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "invalid_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "tender_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "valid_votes_raw",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "source_row",
+          "type": "int32",
+          "nullable": false
+        },
+        {
+          "name": "quality_flags",
+          "type": "list<element: string>",
+          "nullable": false
+        }
+      ]
+    }
+  ]
+}

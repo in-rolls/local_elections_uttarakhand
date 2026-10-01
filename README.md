@@ -1,6 +1,5 @@
 # Uttarakhand Local Election Results
 
-[![CI](https://github.com/in-rolls/local_elections_uttarakhand/actions/workflows/ci.yml/badge.svg)](https://github.com/in-rolls/local_elections_uttarakhand/actions/workflows/ci.yml)
 [![Code license: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 
 Historical candidate results from Uttarakhand's urban local-body and panchayat elections, collected from the [State Election Commission results portal](https://secresult.uk.gov.in/). The repository preserves the collected CSVs and provides typed Parquet exports, explicit column mappings, and reproducible offline checks.
@@ -112,10 +111,9 @@ Conversion rejects unexpected columns, years, and malformed rows. It writes each
 
 ```sh
 make check
-make ci-docker
 ```
 
-The checks run Ruff, formatting, pytest, pre-commit, and exact schema/value/source-checksum verification. CI and the standard Docker target cover Python 3.12 and 3.14. Tests use synthetic records with original-script text, distinct vote fields, leading zeroes, repeated observations, and deliberate failures.
+`make check` runs Ruff, formatting checks and pytest. Run `make verify-data` explicitly for schema/value/source-checksum verification when data change. Tests use synthetic records with original-script text, distinct vote fields, leading zeroes, repeated observations, and deliberate failures.
 
 ## Citation
 
@@ -134,3 +132,7 @@ The code is [MIT licensed](LICENSE). The underlying election results were publis
 - [in-rolls/parse_unsearchable_rolls](https://github.com/in-rolls/parse_unsearchable_rolls) — Parse Unsearchable Electoral Rolls
 
 ✨ _Powered by [Adjacent](https://github.com/gojiplus/adjacent)_ 🚀
+
+## Maintenance
+
+This is a point-in-time data collection; see the [shared maintenance policy](https://github.com/soodoku/data-repos#maintenance-policy). Run the affected parser tests when code changes and the relevant data validators when inputs or outputs change. Full-data checks and publication are explicit operations. Routine edits do not require hosted CI, Docker, a Python-version matrix, Preen or pre-commit.

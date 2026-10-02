@@ -1,16 +1,23 @@
-.PHONY: check test to-parquet verify-data
+PY = .venv/bin/python
+RUFF = .venv/bin/ruff
 
-check:
-	uv sync --frozen --group dev
-	uv run ruff check .
-	uv run ruff format --check .
-	uv run pytest -q
+.PHONY: sync data lint check verify data-summary
 
-test:
-	uv run pytest -q
+sync:
+	uv sync --frozen --all-groups
 
-to-parquet:
-	uv run python scripts/to_parquet.py
+data:
+	$(PY) -m local_elections_uttarakhand.parse.to_parquet
+	$(MAKE) verify data-summary
 
-verify-data:
-	uv run python scripts/to_parquet.py --check
+lint:
+	$(RUFF) check .
+	$(RUFF) format --check .
+
+verify:
+	$(PY) -m local_elections_uttarakhand.build.release verify
+
+data-summary:
+	$(PY) -m local_elections_uttarakhand.build.release summary
+
+check: lint verify

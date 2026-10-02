@@ -6,11 +6,18 @@ Historical candidate results from Uttarakhand's urban local-body and panchayat e
 
 ## Data
 
-| File | Elections | Candidate records |
-|---|---|---:|
-| [uttarakhand-local-elections.parquet](data/fin/uttarakhand-local-elections.parquet) | Urban: 2008, 2013, 2018, 2019 | 12,530 |
-| [uttarakhand-panchayat-elections.parquet](data/fin/uttarakhand-panchayat-elections.parquet) | Panchayat: 2008, 2014, 2019 | 106,382 |
-| [uttarakhand-panchayat-elections-haridwar.parquet](data/fin/uttarakhand-panchayat-elections-haridwar.parquet) | Haridwar panchayat: 2010, 2015 | 10,132 |
+Read these Parquet files directly. `make data-summary` generates this inventory
+from the published manifest.
+
+<!-- datasets:start -->
+
+| File | Rows | Each row represents |
+| --- | ---: | --- |
+| [fin/uttarakhand-local-elections.parquet](data/fin/uttarakhand-local-elections.parquet) | 12,530 | Urban local-body candidate record |
+| [fin/uttarakhand-panchayat-elections-haridwar.parquet](data/fin/uttarakhand-panchayat-elections-haridwar.parquet) | 10,132 | Haridwar panchayat candidate record |
+| [fin/uttarakhand-panchayat-elections.parquet](data/fin/uttarakhand-panchayat-elections.parquet) | 106,382 | Panchayat candidate record |
+
+<!-- datasets:end -->
 
 The original CSVs remain in [data/](data/). [MANIFEST.json](data/fin/MANIFEST.json) records each input and output checksum, schema, and row count. [schemas.json](schemas.json) maps every original Hindi or English header to its exported column. No dataset DOI is recorded in this repository.
 
@@ -77,7 +84,7 @@ There are no saved HTML responses or complete acquisition receipts in this repos
 | Panchayat | `secresult.uk.gov.in/panch_result/` | District/office dashboard links, contest tables, and candidate-detail pages |
 | Haridwar panchayat | Same panchayat system, separate 2010/2015 selections | A separate collection script for Haridwar's election cycles |
 
-The [historical implementation](https://github.com/in-rolls/local_elections_uttarakhand/tree/df9ab6f) preserves the collection scripts. The current converter reads only retained CSVs and makes no network requests. Each Parquet row can be traced to its source file and row number, and `make verify-data` checks all exported values against the declared source mapping.
+The [historical implementation](https://github.com/in-rolls/local_elections_uttarakhand/tree/df9ab6f) preserves the collection scripts. The current converter reads only retained CSVs and makes no network requests. Each Parquet row can be traced to its source file and row number, and `make verify` checks all exported values against the declared source mapping.
 
 ## Usage
 
@@ -85,7 +92,7 @@ The [historical implementation](https://github.com/in-rolls/local_elections_utta
 git clone https://github.com/in-rolls/local_elections_uttarakhand.git
 cd local_elections_uttarakhand
 uv sync --frozen --group dev
-make verify-data
+make verify
 ```
 
 Read a file:
@@ -101,8 +108,8 @@ print(table.schema)
 Rebuild the Parquet exports from the original CSVs:
 
 ```sh
-make to-parquet
-make verify-data
+make data
+make verify
 ```
 
 Conversion rejects unexpected columns, years, and malformed rows. It writes each file through a temporary path before replacing an existing export. It neither deduplicates observations nor treats unknown source cells as verified values.
@@ -113,7 +120,10 @@ Conversion rejects unexpected columns, years, and malformed rows. It writes each
 make check
 ```
 
-`make check` runs Ruff, formatting checks and pytest. Run `make verify-data` explicitly for schema/value/source-checksum verification when data change. Tests use synthetic records with original-script text, distinct vote fields, leading zeroes, repeated observations, and deliberate failures.
+`make check` runs Ruff, formatting checks, and direct verification of every
+exported value, logical type, row position, and source/output hash. There is no
+separate test suite. Maintained code lives under `src/local_elections_uttarakhand/`;
+`parse/` reads saved sources and `build/` verifies and describes the release.
 
 ## Citation
 
@@ -135,4 +145,4 @@ The code is [MIT licensed](LICENSE). The underlying election results were publis
 
 ## Maintenance
 
-This is a point-in-time data collection; see the [shared maintenance policy](https://github.com/soodoku/data-repos#maintenance-policy). Run the affected parser tests when code changes and the relevant data validators when inputs or outputs change. Full-data checks and publication are explicit operations. Routine edits do not require hosted CI, Docker, a Python-version matrix, Preen or pre-commit.
+This is a point-in-time data collection; see the [shared maintenance policy](https://github.com/soodoku/data-repos#maintenance-policy). Run the affected data validators when code, inputs, or outputs change. Full-data checks and publication are explicit operations. Routine edits do not require hosted CI, Docker, a Python-version matrix, Preen or pre-commit.

@@ -1,0 +1,197 @@
+{
+  "purpose": "Name-based probability that an elected pradhan is a woman, for aggregate use only.",
+  "packages": {
+    "naampy": "0.11.0",
+    "indicate": "0.10.0",
+    "scikit-learn": "1.9.1"
+  },
+  "inputs": {
+    "data/fin/uttarakhand-panchayat-elections.parquet": "dcfc03a2345771c8fa8252de37fb750ec46e5245c7f414152b560f8508716172",
+    "data/fin/uttarakhand-panchayat-elections-haridwar.parquet": "28748644e4e5391bb58bb61748f0e4300edb0414571502b4dfc4762b5aa1fe05",
+    "local_elections_up@42fb6190469688fd558596460aef44282e37f6d2:data/2021/gram_panchayat_head_candidate_record.parquet": "3f6e3e1cba08bd6cc012a445369f2f360b20a67bce1e7a022657d06d8263e0bd",
+    "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2016/candidates.parquet": "0b73373fce5b29292c61399b3308d44b95f850f17127f5c2e6bfef3e162f65ca",
+    "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2021/candidates.parquet": "8e6fda01045edf245cc0c7d46665f3496c5e41323775a3900300a9ae0b9537be"
+  },
+  "code_sha256": "82e17b0788570cca29f10b5c2581014f09d8c452f9fbec492f4dd16ee30087b6",
+  "validation": {
+    "labels": {
+      "uttar_pradesh": {
+        "distinct_names": 82135,
+        "female_share": 0.4084
+      },
+      "bihar": {
+        "distinct_names": 224091,
+        "female_share": 0.3037
+      }
+    },
+    "out_of_state_unseen_names": {
+      "bihar->uttar_pradesh": {
+        "char_model": {
+          "n": 4000,
+          "auc": 0.9487,
+          "log_loss": 0.3255,
+          "brier": 0.0908,
+          "accuracy_at_0.5": 0.8802
+        },
+        "naampy_alone": {
+          "n": 4000,
+          "auc": 0.922,
+          "log_loss": 0.3485,
+          "brier": 0.104,
+          "accuracy_at_0.5": 0.8698
+        },
+        "combined": {
+          "n": 4000,
+          "auc": 0.965,
+          "log_loss": 0.3174,
+          "brier": 0.0928,
+          "accuracy_at_0.5": 0.8722
+        },
+        "combined_without_char_model": {
+          "n": 4000,
+          "auc": 0.9486,
+          "log_loss": 0.3319,
+          "brier": 0.0968,
+          "accuracy_at_0.5": 0.8692
+        },
+        "naampy_abstained_share": 0.016
+      },
+      "uttar_pradesh->bihar": {
+        "char_model": {
+          "n": 4000,
+          "auc": 0.9783,
+          "log_loss": 0.2091,
+          "brier": 0.0567,
+          "accuracy_at_0.5": 0.9257
+        },
+        "naampy_alone": {
+          "n": 4000,
+          "auc": 0.9271,
+          "log_loss": 0.3144,
+          "brier": 0.094,
+          "accuracy_at_0.5": 0.8768
+        },
+        "combined": {
+          "n": 4000,
+          "auc": 0.9867,
+          "log_loss": 0.1709,
+          "brier": 0.0486,
+          "accuracy_at_0.5": 0.9357
+        },
+        "combined_without_char_model": {
+          "n": 4000,
+          "auc": 0.9767,
+          "log_loss": 0.1933,
+          "brier": 0.0538,
+          "accuracy_at_0.5": 0.9317
+        },
+        "naampy_abstained_share": 0.0165
+      }
+    },
+    "calibration_combined_held_out": [
+      {
+        "bin": "(-0.001, 0.1]",
+        "n": 4237,
+        "mean_probability": 0.0202,
+        "female_share": 0.0335
+      },
+      {
+        "bin": "(0.1, 0.3]",
+        "n": 788,
+        "mean_probability": 0.1783,
+        "female_share": 0.2043
+      },
+      {
+        "bin": "(0.3, 0.5]",
+        "n": 402,
+        "mean_probability": 0.3963,
+        "female_share": 0.5348
+      },
+      {
+        "bin": "(0.5, 0.7]",
+        "n": 321,
+        "mean_probability": 0.6028,
+        "female_share": 0.6854
+      },
+      {
+        "bin": "(0.7, 0.9]",
+        "n": 500,
+        "mean_probability": 0.8079,
+        "female_share": 0.824
+      },
+      {
+        "bin": "(0.9, 1.0]",
+        "n": 1752,
+        "mean_probability": 0.9802,
+        "female_share": 0.9652
+      }
+    ],
+    "combiner_coefficients": {
+      "intercept": -0.3414,
+      "char_logit": 0.381,
+      "naampy_logit": 0.6072,
+      "naampy_abstained": -2.1013,
+      "female_marker": 3.8254,
+      "male_marker": -0.8178
+    },
+    "uttarakhand": {
+      "2008": {
+        "winners_scored": 6370,
+        "naampy_abstained_share": 0.0006,
+        "women_seat_winners_mean_probability": 0.9693,
+        "women_seat_winners_below_0.5": 55,
+        "open_seat_winners_mean_probability": 0.0771
+      },
+      "2010": {
+        "winners_scored": 314,
+        "naampy_abstained_share": 0.0064,
+        "women_seat_winners_mean_probability": 0.849,
+        "women_seat_winners_below_0.5": 20,
+        "open_seat_winners_mean_probability": 0.1452
+      },
+      "2014": {
+        "winners_scored": 6621,
+        "naampy_abstained_share": 0.0012,
+        "women_seat_winners_mean_probability": 0.9738,
+        "women_seat_winners_below_0.5": 46,
+        "open_seat_winners_mean_probability": 0.0897
+      },
+      "2015": {
+        "winners_scored": 308,
+        "naampy_abstained_share": 0.0032,
+        "women_seat_winners_mean_probability": 0.8914,
+        "women_seat_winners_below_0.5": 11,
+        "open_seat_winners_mean_probability": 0.132
+      },
+      "2019": {
+        "winners_scored": 5847,
+        "naampy_abstained_share": 0.0005,
+        "women_seat_winners_mean_probability": 0.9595,
+        "women_seat_winners_below_0.5": 62,
+        "open_seat_winners_mean_probability": 0.1535
+      }
+    }
+  },
+  "files": {
+    "winner_female_probability_2008.parquet": {
+      "rows": 6370,
+      "sha256": "bba77e3e96a622003cea1444f20dc5a68dba0cbc50a23f633c9a6f1632a0fdd6"
+    },
+    "winner_female_probability_2010.parquet": {
+      "rows": 314,
+      "sha256": "a651838832fa94a602986fea368e0a7d5eec07fe5cb3af73be5233d80fb31c5d"
+    },
+    "winner_female_probability_2014.parquet": {
+      "rows": 6621,
+      "sha256": "b1eac1e933c7d76cb277d5f78eda0ba03f92699809103cc195aa01194637c5e8"
+    },
+    "winner_female_probability_2015.parquet": {
+      "rows": 308,
+      "sha256": "ae3473da54b740e54468801785f7f9d13d5f6c1af3f325a118747ad2c8e85862"
+    },
+    "winner_female_probability_2019.parquet": {
+      "rows": 5847,
+      "sha256": "b04ba6d92d15f25c32d9434dd0b24fd1e3ba05219b6f171d93e3adcb6fc06ea0"
+    }
+  }
+}

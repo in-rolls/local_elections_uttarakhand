@@ -59,7 +59,7 @@ These are counts of collected candidate records, not unique seats or verified st
 | `office_raw` | Office: gram-panchayat head, block-panchayat member, or district-panchayat member |
 | `declared_results_count_raw`, `unopposed_elected_count_raw` | Source dashboard counts for the district/office, repeated across candidate rows |
 | `block_raw`, `gram_panchayat_raw`, `block_ward_raw`, `district_ward_raw` | Source location and ward labels; which fields apply depends on the office |
-| `reservation_raw` | Seat-reservation cell |
+| `reserved_raw` | Seat-reservation cell |
 | `winner_raw`, `winner_symbol_raw`, `winner_votes_raw` | Winner-level fields repeated for the contest |
 | `runner_up_raw`, `runner_up_symbol_raw`, `runner_up_votes_raw`, `margin_raw` | Runner-up and reported vote-margin fields |
 | `candidate_serial_raw`, `relation_name_raw`, `candidate_symbol_raw` | Detailed candidate serial, father/husband name, and symbol |

@@ -70,7 +70,7 @@ LABELS = {
             "data/2021/candidates.parquet": (
                 "8e6fda01045edf245cc0c7d46665f3496c5e41323775a3900300a9ae0b9537be",
                 "candidate_name",
-                "candidate_gender",
+                "candidate_gender",  # old-name: as named in the pinned Bihar file
             ),
         },
     },
@@ -304,7 +304,7 @@ def winners():
                     "district": d["district_raw"].str.strip(),
                     "block": d["block_raw"].str.strip(),
                     "gram_panchayat": d["gram_panchayat_raw"].str.strip(),
-                    "reservation_raw": d["reservation_raw"].str.strip(),
+                    "reserved_raw": d["reserved_raw"].str.strip(),
                     "winner": d["winner_raw"].fillna("").str.strip(),
                 }
             )
@@ -391,7 +391,7 @@ def build():
         ]
     ).sort_index()
     table = pd.concat([w.drop(columns=["name"]), f], axis=1)
-    prob = "winner_female_probability_from_name"
+    prob = "winner_woman_probability"
     table[prob] = np.nan
     table.loc[deva.index, prob] = combiner.predict_proba(f.loc[deva.index, STACK])[:, 1]
     if len(lat):
@@ -405,7 +405,7 @@ def build():
         "fit on UP 2021 pradhan and Bihar 2016/2021 recorded candidate sex; "
         "combiner fit on out-of-state names"
     )
-    table["winner_female_probability_method"] = np.where(
+    table["winner_woman_probability_method"] = np.where(
         table["printed_latin"],
         f"logit(naampy {version('naampy')} on printed Latin first name "
         f"+ last-word markers); {labels}",
@@ -413,7 +413,7 @@ def build():
         f"{version('indicate')} first name + last-word markers); {labels}",
     )
     table = table.drop(columns=["char_logit", "naampy_logit"])
-    women_seats = table["reservation_raw"].str.contains("हिला")
+    women_seats = table["reserved_raw"].str.contains("हिला")
     validation["uttarakhand"] = {
         str(year): {
             "winners_scored": len(g),
@@ -434,7 +434,7 @@ def build():
     OUT.mkdir(parents=True, exist_ok=True)
     files = {}
     for year, g in table.groupby("year"):
-        path = OUT / f"winner_female_probability_{year}.parquet"
+        path = OUT / f"winner_woman_probability_{year}.parquet"
         key = ["district", "block", "gram_panchayat", "winner"]
         if g.duplicated(key).any():
             raise SystemExit(f"{year}: inferred sex repeats a seat key")

@@ -131,7 +131,7 @@ def seats(source, year):
         d.groupby(KEY)
         .agg(
             candidates=("candidate_raw", "size"),
-            reservations=("reservation_raw", "nunique"),
+            reservations=("reserved_raw", "nunique"),
         )
         .join(candidates.rename("candidate_names"))
     )

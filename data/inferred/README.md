@@ -5,7 +5,7 @@ keeps its inputs beside the result, and is never written back into `data/fin/`.
 
 | File | Row | What is inferred |
 | --- | --- | --- |
-| `winner_female_probability_{year}.parquet` | An elected pradhan (2008, 2010, 2014, 2015, 2019; 2010 and 2015 are Haridwar) | `winner_female_probability_from_name` |
+| `winner_woman_probability_{year}.parquet` | An elected pradhan (2008, 2010, 2014, 2015, 2019; 2010 and 2015 are Haridwar) | `winner_woman_probability` |
 
 ## Winner sex
 
@@ -43,7 +43,7 @@ Some of the women's-seat winners below 0.5 carry plainly male names (विन�
 MANOJ KUMAR) and are source errors. Others are women's names the model misreads
 (भागीरथी). 232 winners in 2019 are printed in Latin script. They are scored
 without the character model, and their rows say so in
-`winner_female_probability_method`.
+`winner_woman_probability_method`.
 
 Use these probabilities as an outcome in aggregate analyses, for example as the
 expected share of women, rather than as a label for any person. `MANIFEST.json`

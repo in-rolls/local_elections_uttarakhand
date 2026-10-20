@@ -6,13 +6,13 @@
     "scikit-learn": "1.9.1"
   },
   "inputs": {
-    "data/fin/uttarakhand-panchayat-elections.parquet": "dcfc03a2345771c8fa8252de37fb750ec46e5245c7f414152b560f8508716172",
-    "data/fin/uttarakhand-panchayat-elections-haridwar.parquet": "28748644e4e5391bb58bb61748f0e4300edb0414571502b4dfc4762b5aa1fe05",
+    "data/fin/uttarakhand-panchayat-elections.parquet": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264",
+    "data/fin/uttarakhand-panchayat-elections-haridwar.parquet": "021a01622f41072c704b48ce14ecbb0cdc34689403248148e3867af784926b4f",
     "local_elections_up@42fb6190469688fd558596460aef44282e37f6d2:data/2021/gram_panchayat_head_candidate_record.parquet": "3f6e3e1cba08bd6cc012a445369f2f360b20a67bce1e7a022657d06d8263e0bd",
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2016/candidates.parquet": "0b73373fce5b29292c61399b3308d44b95f850f17127f5c2e6bfef3e162f65ca",
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2021/candidates.parquet": "8e6fda01045edf245cc0c7d46665f3496c5e41323775a3900300a9ae0b9537be"
   },
-  "code_sha256": "82e17b0788570cca29f10b5c2581014f09d8c452f9fbec492f4dd16ee30087b6",
+  "code_sha256": "46dbcd1d0ef78882e0c4eab177ae974adacd4ac1dc51ba6f6fcfbd16698be927",
   "validation": {
     "labels": {
       "uttar_pradesh": {
@@ -173,25 +173,25 @@
     }
   },
   "files": {
-    "winner_female_probability_2008.parquet": {
+    "winner_woman_probability_2008.parquet": {
       "rows": 6370,
-      "sha256": "bba77e3e96a622003cea1444f20dc5a68dba0cbc50a23f633c9a6f1632a0fdd6"
+      "sha256": "3f5744754ea87453d11a18a398bb2c9588e3cf3b0df60a4a1b2dd61905c1f13c"
     },
-    "winner_female_probability_2010.parquet": {
+    "winner_woman_probability_2010.parquet": {
       "rows": 314,
-      "sha256": "a651838832fa94a602986fea368e0a7d5eec07fe5cb3af73be5233d80fb31c5d"
+      "sha256": "5e52a42ee12648e7c0d69aaa166c22dfb054ac49ad172d2ff04ab3f585458066"
     },
-    "winner_female_probability_2014.parquet": {
+    "winner_woman_probability_2014.parquet": {
       "rows": 6621,
-      "sha256": "b1eac1e933c7d76cb277d5f78eda0ba03f92699809103cc195aa01194637c5e8"
+      "sha256": "24d4676822789d8de43e44630d84e4eda6e796ce8017bcca6417279af6178df8"
     },
-    "winner_female_probability_2015.parquet": {
+    "winner_woman_probability_2015.parquet": {
       "rows": 308,
-      "sha256": "ae3473da54b740e54468801785f7f9d13d5f6c1af3f325a118747ad2c8e85862"
+      "sha256": "bd12e9fe6936b7e288b385fcd048cdfc621196f526f1e249be81120c98ec67b2"
     },
-    "winner_female_probability_2019.parquet": {
+    "winner_woman_probability_2019.parquet": {
       "rows": 5847,
-      "sha256": "b04ba6d92d15f25c32d9434dd0b24fd1e3ba05219b6f171d93e3adcb6fc06ea0"
+      "sha256": "24e6f78664d4d40f9fd7073fb693eaffd9db76f923b932b6e439c06602fe3a49"
     }
   }
 }

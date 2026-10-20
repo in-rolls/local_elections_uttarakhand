@@ -12,7 +12,7 @@
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2016/candidates.parquet": "0b73373fce5b29292c61399b3308d44b95f850f17127f5c2e6bfef3e162f65ca",
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2021/candidates.parquet": "8e6fda01045edf245cc0c7d46665f3496c5e41323775a3900300a9ae0b9537be"
   },
-  "code_sha256": "46dbcd1d0ef78882e0c4eab177ae974adacd4ac1dc51ba6f6fcfbd16698be927",
+  "code_sha256": "8671c0930ab15f724451c459ec675a6fdcda8726715c9c9d89a2027022e98d97",
   "validation": {
     "labels": {
       "uttar_pradesh": {
@@ -131,8 +131,8 @@
       "char_logit": 0.381,
       "naampy_logit": 0.6072,
       "naampy_abstained": -2.1013,
-      "female_marker": 3.8254,
-      "male_marker": -0.8178
+      "winner_woman_name_marker": 3.8254,
+      "winner_man_name_marker": -0.8178
     },
     "uttarakhand": {
       "2008": {
@@ -175,23 +175,23 @@
   "files": {
     "winner_woman_probability_2008.parquet": {
       "rows": 6370,
-      "sha256": "3f5744754ea87453d11a18a398bb2c9588e3cf3b0df60a4a1b2dd61905c1f13c"
+      "sha256": "df38d5c0e7df98b18bcd6c9d732501e8b97ec4e7be9765816e331cd2586e9064"
     },
     "winner_woman_probability_2010.parquet": {
       "rows": 314,
-      "sha256": "5e52a42ee12648e7c0d69aaa166c22dfb054ac49ad172d2ff04ab3f585458066"
+      "sha256": "6c71dedcfbf81d53ad08563dad2a743f2cb22763d106ceeb5f685c0b3d8ed8e8"
     },
     "winner_woman_probability_2014.parquet": {
       "rows": 6621,
-      "sha256": "24d4676822789d8de43e44630d84e4eda6e796ce8017bcca6417279af6178df8"
+      "sha256": "0878ef647d01fc2476992fe3ebb54061570663e97e67aaf4be7f4022ada3d999"
     },
     "winner_woman_probability_2015.parquet": {
       "rows": 308,
-      "sha256": "bd12e9fe6936b7e288b385fcd048cdfc621196f526f1e249be81120c98ec67b2"
+      "sha256": "8f388ba90726026d7046a284745be3fac3c77555132089ab4a8b68bf6f0978cf"
     },
     "winner_woman_probability_2019.parquet": {
       "rows": 5847,
-      "sha256": "24e6f78664d4d40f9fd7073fb693eaffd9db76f923b932b6e439c06602fe3a49"
+      "sha256": "c02b699224d544d2d2a806d9b888830450c7552d8f50638087a072b600246f8a"
     }
   }
 }

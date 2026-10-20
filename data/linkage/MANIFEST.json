@@ -1,0 +1,50 @@
+{
+  "purpose": "Research crosswalks between pradhan seats of consecutive elections. A link states that GP names agree inside the same block, not that boundaries are unchanged.",
+  "matcher": {
+    "preclink": "1.2.0",
+    "rapidfuzz": "3.14.6",
+    "name_threshold": 0.8
+  },
+  "inputs": {
+    "data/fin/uttarakhand-panchayat-elections.parquet": "dcfc03a2345771c8fa8252de37fb750ec46e5245c7f414152b560f8508716172"
+  },
+  "code_sha256": "e32a12107fb180eb2e95c18d39654351c0d26ecd2387056bfd7279c7fee2e94a",
+  "pairs": {
+    "2008_2014": {
+      "validation": {
+        "gps_2008": 6354,
+        "gps_2014": 6607,
+        "linked": 5403,
+        "folded_names_identical_share": 0.8349,
+        "shared_candidate_name_linked": 0.0814,
+        "shared_candidate_name_random_in_block": 0.0311,
+        "shared_candidate_name_identical_names": 0.0825,
+        "shared_candidate_name_fuzzy_names": 0.0762,
+        "fuzzy_links": 892
+      },
+      "file": {
+        "path": "gp_2008_2014.parquet",
+        "rows": 5403,
+        "sha256": "f0da243d807b179ff2b8f9499f351f8c6ec897fe78c2190fa5281aa84503f2ba"
+      }
+    },
+    "2014_2019": {
+      "validation": {
+        "gps_2014": 6607,
+        "gps_2019": 5840,
+        "linked": 5042,
+        "folded_names_identical_share": 0.8643,
+        "shared_candidate_name_linked": 0.0504,
+        "shared_candidate_name_random_in_block": 0.0179,
+        "shared_candidate_name_identical_names": 0.05,
+        "shared_candidate_name_fuzzy_names": 0.0526,
+        "fuzzy_links": 684
+      },
+      "file": {
+        "path": "gp_2014_2019.parquet",
+        "rows": 5042,
+        "sha256": "4dfe5e505efc91f2e04ba86c93cd0912f1335d6b5d1a5ae470df73700e16f5b7"
+      }
+    }
+  }
+}

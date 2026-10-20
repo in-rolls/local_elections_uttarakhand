@@ -8,7 +8,12 @@ authors = [{ name = "Gaurav Sood", email = "contact@gsood.com" }]
 license = "MIT"
 license-files = ["LICENSE"]
 keywords = ["Uttarakhand", "elections", "panchayats", "reservation", "data"]
-dependencies = ["pyarrow>=21"]
+dependencies = [
+    "pandas>=3.0.6",
+    "preclink>=1.2.0",
+    "pyarrow>=21",
+    "rapidfuzz>=3.14.6",
+]
 
 [project.urls]
 Repository = "https://github.com/in-rolls/local_elections_uttarakhand"
@@ -16,6 +21,11 @@ Issues = "https://github.com/in-rolls/local_elections_uttarakhand/issues"
 
 [dependency-groups]
 dev = ["ruff>=0.14"]
+infer = [
+    "indicate>=0.10 ; python_full_version >= '3.13'",
+    "naampy>=0.11",
+    "scikit-learn>=1.7",
+]
 
 [tool.ruff]
 line-length = 88

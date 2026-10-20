@@ -1,22 +1,148 @@
-## SEC Uttarakhand
+# Uttarakhand Local Election Results
 
-We scrape local election data for Uttarakhand from: https://secresult.uk.gov.in/
+[![Code license: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
 
-* [Data](data/)
-* [Scripts](scripts/)
+Historical candidate results from Uttarakhand's urban local-body and panchayat elections, collected from the [State Election Commission results portal](https://secresult.uk.gov.in/). The repository preserves the collected CSVs and provides typed Parquet exports, explicit column mappings, and reproducible offline checks.
 
-### Local Bodies Elections
----------------------------
+## Data
 
-final data: 
+Read these Parquet files directly. `make data-summary` generates this inventory
+from the published manifest.
 
+<!-- datasets:start -->
 
-Year, District, NN/NP/NPP Name, Ward Name(Seat Category), Winning Candidate (Name-Party-Symbol), First Runner-up Candidate (Name-Party-Symbol), Name, Ward, Candidate, Party, Symbol, Votes Secured, Total Votes, Invalid Votes, Tender Votes, Valid Votes
+| File | Rows | Each row represents |
+| --- | ---: | --- |
+| [fin/uttarakhand-local-elections.parquet](data/fin/uttarakhand-local-elections.parquet) | 12,530 | Urban local-body candidate record |
+| [fin/uttarakhand-panchayat-elections-haridwar.parquet](data/fin/uttarakhand-panchayat-elections-haridwar.parquet) | 10,132 | Haridwar panchayat candidate record |
+| [fin/uttarakhand-panchayat-elections.parquet](data/fin/uttarakhand-panchayat-elections.parquet) | 106,382 | Panchayat candidate record |
 
+<!-- datasets:end -->
 
-### Panchayat
+The original CSVs remain in [data/](data/). [MANIFEST.json](data/fin/MANIFEST.json) records each input and output checksum, schema, and row count. [schemas.json](schemas.json) maps every original Hindi or English header to its exported column. No dataset DOI is recorded in this repository.
 
-final data: 
+| Series | Year | Records |
+|---|---:|---:|
+| Urban | 2008 | 3,282 |
+| Urban | 2013 | 3,411 |
+| Urban | 2018 | 5,585 |
+| Urban | 2019 | 252 |
+| Panchayat | 2008 | 40,746 |
+| Panchayat | 2014 | 36,736 |
+| Panchayat | 2019 | 28,900 |
+| Haridwar panchayat | 2010 | 5,095 |
+| Haridwar panchayat | 2015 | 5,037 |
 
-निर्वाचित पद (post), जनपद (district --- names are listed in col.),  घोषित परिणाम (declared results), निर्विरोध निर्वाचित (unopposed elected), विकास खण्‍ड (division),	ग्राम पंचायत (panchayat), आरक्षण स्थिति (reservation status), विजयी प्रत्‍याशी का नाम (winning candidate name), चुनाव चिन्‍ह (election symbol),	प्राप्‍त मत (winner votes), प्रथम रनर अप प्रत्‍याशी का नाम (runner's up name),	चुनाव चिन्‍ह (election symbol),	प्राप्‍त मत (runner up votes), मतों का अन्‍तर (diff. in votes), क्रमांक (serial number), अभ्‍यर्थी का नाम (candidate name), पिता/पति का नाम (husband or fathers name),	चुनाव चिन्‍ह (election symbol),	प्राप्‍त मत (votes)
+These are counts of collected candidate records, not unique seats or verified statewide coverage. Haridwar's panchayat elections are supplied in a separate file with different election years.
 
+## Column dictionary
+
+`year` is int16 and `source_row` is int32. Source data cells remain strings, with empty cells represented as null. The `_raw` suffix identifies values preserved without substantive recoding. The source-row number starts at 1 after the CSV header and identifies an observation within its file. Repeated observations remain separate.
+
+| Shared columns | Meaning |
+|---|---|
+| `year`, `district_raw` | Election year and source district label |
+| `candidate_raw`, `candidate_votes_raw` | Candidate name and that candidate's vote cell |
+| `source_row` | Logical row in the corresponding source CSV |
+| `quality_flags` | List of known data concerns; list of strings |
+
+| Urban-only columns | Meaning |
+|---|---|
+| `body_name_raw`, `ward_category_raw` | Listing's local-body name and combined ward/category text |
+| `winner_summary_raw`, `runner_up_summary_raw` | Listing's combined name/party/symbol fields |
+| `detail_body_name_raw`, `detail_ward_raw` | Body and ward labels from the detailed result page |
+| `party_raw`, `symbol_raw` | Candidate party and symbol |
+| `total_votes_polled_raw`, `invalid_votes_raw`, `tender_votes_raw`, `valid_votes_raw` | Contest totals repeated on candidate rows |
+
+| Panchayat-only columns | Meaning |
+|---|---|
+| `office_raw` | Office: gram-panchayat head, block-panchayat member, or district-panchayat member |
+| `declared_results_count_raw`, `unopposed_elected_count_raw` | Source dashboard counts for the district/office, repeated across candidate rows |
+| `block_raw`, `gram_panchayat_raw`, `block_ward_raw`, `district_ward_raw` | Source location and ward labels; which fields apply depends on the office |
+| `reserved_raw` | Seat-reservation cell |
+| `winner_raw`, `winner_symbol_raw`, `winner_votes_raw` | Winner-level fields repeated for the contest |
+| `runner_up_raw`, `runner_up_symbol_raw`, `runner_up_votes_raw`, `margin_raw` | Runner-up and reported vote-margin fields |
+| `candidate_serial_raw`, `relation_name_raw`, `candidate_symbol_raw` | Detailed candidate serial, father/husband name, and symbol |
+
+The complete mapping retains distinctions among the three Hindi `चुनाव चिन्‍ह`/`प्राप्‍त मत` pairs: winner, runner-up, and candidate. Vote text remains text because the historical scraper already serialized it; conversion does not infer numeric missing values or remove leading zeroes.
+
+## Coverage and known gaps
+
+**Do not sum repeated contest or dashboard totals across candidate rows.** Candidate votes and winner votes describe different units. `unopposed_elected_count_raw` is a repeated dashboard count, not a boolean describing the individual candidate. A separate, verified seat/contest key is needed before aggregating these fields.
+
+The urban data include 43 rows containing Cyrillic characters where the source text appears misdecoded. They carry `text_encoding_suspect`. The two panchayat rows without candidate names carry `candidate_missing`. Their original cells are retained; there is no automatic encoding repair or row deletion.
+
+The original scripts caught table-parsing errors and continued, then dropped exact duplicate rows before writing CSVs. Failures were not retained in a structured manifest, so missing contests cannot be enumerated from these files alone. The stored urban script also contains early loop exits and does not reproduce the entire committed multi-year collection as written. Coverage should therefore be assessed from the source records and independent election totals, rather than inferred from the scraper's year list.
+
+There are no saved HTML responses or complete acquisition receipts in this repository. Exact capture times and per-record retrieval histories are unavailable. These files do not supply a validated cross-year seat panel, stable administrative codes, or a complete roster of unopposed winners.
+
+## How collected
+
+| Series | Historical source route | Method |
+|---|---|---|
+| Urban | `secresult.uk.gov.in`, urban result and candidate-detail forms | ASP.NET form submissions, combining contest summaries with detailed candidate tables |
+| Panchayat | `secresult.uk.gov.in/panch_result/` | District/office dashboard links, contest tables, and candidate-detail pages |
+| Haridwar panchayat | Same panchayat system, separate 2010/2015 selections | A separate collection script for Haridwar's election cycles |
+
+The [historical implementation](https://github.com/in-rolls/local_elections_uttarakhand/tree/df9ab6f) preserves the collection scripts. The current converter reads only retained CSVs and makes no network requests. Each Parquet row can be traced to its source file and row number, and `make verify` checks all exported values against the declared source mapping.
+
+## Usage
+
+```sh
+git clone https://github.com/in-rolls/local_elections_uttarakhand.git
+cd local_elections_uttarakhand
+uv sync --frozen --group dev
+make verify
+```
+
+Read a file:
+
+```python
+import pyarrow.parquet as pq
+
+table = pq.read_table("data/fin/uttarakhand-local-elections.parquet")
+print(table.num_rows)
+print(table.schema)
+```
+
+Rebuild the Parquet exports from the original CSVs:
+
+```sh
+make data
+make verify
+```
+
+Conversion rejects unexpected columns, years, and malformed rows. It writes each file through a temporary path before replacing an existing export. It neither deduplicates observations nor treats unknown source cells as verified values.
+
+## Development
+
+```sh
+make check
+```
+
+`make check` runs Ruff, formatting checks, and direct verification of every
+exported value, logical type, row position, and source/output hash. There is no
+separate test suite. Maintained code lives under `src/local_elections_uttarakhand/`;
+`parse/` reads saved sources and `build/` verifies and describes the release.
+
+## Citation
+
+Gaurav Sood. *Uttarakhand Local Election Results*. Include the repository URL and commit used. [CITATION.cff](CITATION.cff) provides machine-readable metadata. Contact: [contact@gsood.com](mailto:contact@gsood.com).
+
+## License
+
+The code is [MIT licensed](LICENSE). The underlying election results were published by the Uttarakhand State Election Commission. No separate data license is asserted in this repository.
+
+## 🔗 Adjacent Repositories
+
+- [in-rolls/local_elections_kerala](https://github.com/in-rolls/local_elections_kerala) — Kerala Local Government Seat Reservation Data and Winner Attributes
+- [in-rolls/local_elections_bihar](https://github.com/in-rolls/local_elections_bihar) — Bihar panchayat elections: 2016 candidates and votes for six offices; 2021 mukhiya candidates, results, winners and seat reservations
+- [in-rolls/local_elections_up](https://github.com/in-rolls/local_elections_up) — UP Local Election Data --- GP and ULB. Seat reservation, winner, and candidates for some elections
+- [in-rolls/local_elections_rajasthan](https://github.com/in-rolls/local_elections_rajasthan) — Rajasthan GP Election Reservation Status and Results for 2020--2022
+- [in-rolls/parse_unsearchable_rolls](https://github.com/in-rolls/parse_unsearchable_rolls) — Parse Unsearchable Electoral Rolls
+
+✨ _Powered by [Adjacent](https://github.com/gojiplus/adjacent)_ 🚀
+
+## Maintenance
+
+This is a point-in-time data collection; see the [shared maintenance policy](https://github.com/soodoku/data-repos#maintenance-policy). Run the affected data validators when code, inputs, or outputs change. Full-data checks and publication are explicit operations. Routine edits do not require hosted CI, Docker, a Python-version matrix, Preen or pre-commit.

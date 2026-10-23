@@ -2,7 +2,7 @@
 
 The results portal records no sex, so it is inferred from the printed Devanagari
 name and kept apart from the source tables: outputs live in `data/inferred/`,
-carry their inputs beside the probability, and never enter `data/fin/`. This
+carry their inputs beside the probability, and never enter the candidate tables. This
 follows the `name-sex-inference` recipe and the pooled dictionary's columns.
 
 Labels are recorded sex, not law: Uttar Pradesh's 2021 pradhan candidates and
@@ -38,11 +38,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import brier_score_loss, log_loss, roc_auc_score
 
 DATA = Path("data")
-OUT = DATA / "inferred"
-CACHE = DATA / "derived" / "winner_sex"
+OUT = DATA / "release" / "inferred"
+CACHE = DATA / "build" / "winner_sex"
 SOURCES = [
-    DATA / "fin" / "uttarakhand-panchayat-elections.parquet",
-    DATA / "fin" / "uttarakhand-panchayat-elections-haridwar.parquet",
+    DATA / "release" / "panchayat_candidates.parquet",
+    DATA / "release" / "panchayat_candidates_haridwar.parquet",
 ]
 OFFICE = "प्रधान (ग्राम पंचायत)"
 # Recorded-sex labels, pinned. Only the name and sex columns are read.
@@ -113,7 +113,7 @@ def sha(path):
 def fetch(repo, ref, path, expected):
     """A label file at its pinned commit: the sibling checkout if its bytes match,
     otherwise GitHub at that commit, cached and checked."""
-    sibling = Path("..") / repo / path
+    sibling = Path(__file__).resolve().parents[4] / repo / path
     if sibling.exists() and sha(sibling) == expected:
         return sibling
     cached = CACHE / "labels" / repo / ref / path

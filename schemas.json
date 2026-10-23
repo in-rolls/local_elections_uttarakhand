@@ -28,7 +28,7 @@
       2010,
       2015
     ],
-    "output": "uttarakhand-panchayat-elections-haridwar.parquet"
+    "output": "panchayat_candidates_haridwar.parquet"
   },
   "uttarakhand-panchayat-elections.csv": {
     "columns": {
@@ -60,7 +60,7 @@
       2014,
       2019
     ],
-    "output": "uttarakhand-panchayat-elections.parquet"
+    "output": "panchayat_candidates.parquet"
   },
   "uttarakhand-local-elections.csv": {
     "columns": {
@@ -87,6 +87,6 @@
       2018,
       2019
     ],
-    "output": "uttarakhand-local-elections.parquet"
+    "output": "ulb_candidates.parquet"
   }
 }

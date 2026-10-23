@@ -35,8 +35,8 @@ from preclink import Pipeline
 from rapidfuzz import fuzz
 
 DATA = Path("data")
-SOURCE = DATA / "fin" / "uttarakhand-panchayat-elections.parquet"
-OUT = DATA / "linkage"
+SOURCE = DATA / "release" / "panchayat_candidates.parquet"
+OUT = DATA / "release" / "linkage"
 OFFICE = "प्रधान (ग्राम पंचायत)"
 PAIRS = [(2008, 2014), (2014, 2019)]
 KEY = ["district", "block", "gram_panchayat"]

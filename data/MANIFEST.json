@@ -1,9 +1,9 @@
 {
   "format_version": 1,
-  "column_map_sha256": "1f585f1a59ff2c27d78c5fcf02e751b08ee9bc23fd714cd93f1f3967e375cb92",
+  "column_map_sha256": "a47152598a865d10d7635fca0280eaa5bd163d989f00930907b941e10e5f309d",
   "files": [
     {
-      "file": "uttarakhand-panchayat-elections-haridwar.parquet",
+      "file": "release/panchayat_candidates_haridwar.parquet",
       "source_csv": "uttarakhand-panchayat-elections-haridwar.csv",
       "source_sha256": "a1575bd1d8acb93ad1dd340a3e90a19b891f12a5f4726ed9e3993107e26799b1",
       "sha256": "021a01622f41072c704b48ce14ecbb0cdc34689403248148e3867af784926b4f",
@@ -132,7 +132,7 @@
       ]
     },
     {
-      "file": "uttarakhand-panchayat-elections.parquet",
+      "file": "release/panchayat_candidates.parquet",
       "source_csv": "uttarakhand-panchayat-elections.csv",
       "source_sha256": "cf95e7c91ed41910c79f596c4634f7e2e67107f047676fb90c5ecdc88decbf21",
       "sha256": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264",
@@ -261,7 +261,7 @@
       ]
     },
     {
-      "file": "uttarakhand-local-elections.parquet",
+      "file": "release/ulb_candidates.parquet",
       "source_csv": "uttarakhand-local-elections.csv",
       "source_sha256": "65297bb4b526fe0f76c31a77898d9efd4c2bb95f106de58ed47ff9c703f6ba31",
       "sha256": "10d2a3162cb68cffdaa16f8b38aba3c40d44ae87a956fba31e1ecd201ebbe9ed",

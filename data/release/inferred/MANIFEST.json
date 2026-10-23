@@ -6,13 +6,13 @@
     "scikit-learn": "1.9.1"
   },
   "inputs": {
-    "data/fin/uttarakhand-panchayat-elections.parquet": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264",
-    "data/fin/uttarakhand-panchayat-elections-haridwar.parquet": "021a01622f41072c704b48ce14ecbb0cdc34689403248148e3867af784926b4f",
+    "data/release/panchayat_candidates.parquet": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264",
+    "data/release/panchayat_candidates_haridwar.parquet": "021a01622f41072c704b48ce14ecbb0cdc34689403248148e3867af784926b4f",
     "local_elections_up@42fb6190469688fd558596460aef44282e37f6d2:data/2021/gram_panchayat_head_candidate_record.parquet": "3f6e3e1cba08bd6cc012a445369f2f360b20a67bce1e7a022657d06d8263e0bd",
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2016/candidates.parquet": "0b73373fce5b29292c61399b3308d44b95f850f17127f5c2e6bfef3e162f65ca",
     "local_elections_bihar@fda20d495e7824cde6d968f97f51b0943133ba73:data/2021/candidates.parquet": "8e6fda01045edf245cc0c7d46665f3496c5e41323775a3900300a9ae0b9537be"
   },
-  "code_sha256": "8671c0930ab15f724451c459ec675a6fdcda8726715c9c9d89a2027022e98d97",
+  "code_sha256": "354a735bcd8e3fc9e4f51f8e69df4c98151b732c9e96957d40a29aee707e47fd",
   "validation": {
     "labels": {
       "uttar_pradesh": {

@@ -6,9 +6,9 @@
     "name_threshold": 0.8
   },
   "inputs": {
-    "data/fin/uttarakhand-panchayat-elections.parquet": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264"
+    "data/release/panchayat_candidates.parquet": "f7fca5f6d6c977f62fe9cfaef20fb9a6d195ad43cd43cbbe54f6dddfc9c0b264"
   },
-  "code_sha256": "d083f48bb6f99233ea95ee9eed73d0123347ae988e52f0d03471c8cc09cf9a30",
+  "code_sha256": "37244ce1b49bcd69d6c73b3a36526beed654be4147471f888d104519770068f2",
   "pairs": {
     "2008_2014": {
       "validation": {

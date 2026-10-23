@@ -1,0 +1,4 @@
+path,url,sha256,bytes,fetched_at_utc,method,source
+data/raw/secresult/uttarakhand-local-elections.csv,,65297bb4b526fe0f76c31a77898d9efd4c2bb95f106de58ed47ff9c703f6ba31,6285642,,unknown,"secresult.uk.gov.in, compiled by a scraper whose pages were not kept"
+data/raw/secresult/uttarakhand-panchayat-elections-haridwar.csv,,a1575bd1d8acb93ad1dd340a3e90a19b891f12a5f4726ed9e3993107e26799b1,3550186,,unknown,"secresult.uk.gov.in, compiled by a scraper whose pages were not kept"
+data/raw/secresult/uttarakhand-panchayat-elections.csv,,cf95e7c91ed41910c79f596c4634f7e2e67107f047676fb90c5ecdc88decbf21,39643619,,unknown,"secresult.uk.gov.in, compiled by a scraper whose pages were not kept"

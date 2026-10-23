@@ -13,13 +13,13 @@ from the published manifest.
 
 | File | Rows | Each row represents |
 | --- | ---: | --- |
-| [fin/uttarakhand-local-elections.parquet](data/fin/uttarakhand-local-elections.parquet) | 12,530 | Urban local-body candidate record |
-| [fin/uttarakhand-panchayat-elections-haridwar.parquet](data/fin/uttarakhand-panchayat-elections-haridwar.parquet) | 10,132 | Haridwar panchayat candidate record |
-| [fin/uttarakhand-panchayat-elections.parquet](data/fin/uttarakhand-panchayat-elections.parquet) | 106,382 | Panchayat candidate record |
+| [release/panchayat_candidates.parquet](data/release/panchayat_candidates.parquet) | 106,382 | Panchayat candidate record |
+| [release/panchayat_candidates_haridwar.parquet](data/release/panchayat_candidates_haridwar.parquet) | 10,132 | Haridwar panchayat candidate record |
+| [release/ulb_candidates.parquet](data/release/ulb_candidates.parquet) | 12,530 | Urban local-body candidate record |
 
 <!-- datasets:end -->
 
-The original CSVs remain in [data/](data/). [MANIFEST.json](data/fin/MANIFEST.json) records each input and output checksum, schema, and row count. [schemas.json](schemas.json) maps every original Hindi or English header to its exported column. No dataset DOI is recorded in this repository.
+The collected CSVs are in [data/raw/secresult/](data/raw/secresult/), each pinned by sha256 in [fetch_log.csv](data/raw/fetch_log.csv); the pages they were compiled from were not kept, so `url` is blank and `method` is `unknown`. [MANIFEST.json](data/MANIFEST.json) records each input and output checksum, schema, and row count. [schemas.json](schemas.json) maps every original Hindi or English header to its exported column. No dataset DOI is recorded in this repository.
 
 | Series | Year | Records |
 |---|---:|---:|
@@ -100,7 +100,7 @@ Read a file:
 ```python
 import pyarrow.parquet as pq
 
-table = pq.read_table("data/fin/uttarakhand-local-elections.parquet")
+table = pq.read_table("data/release/ulb_candidates.parquet")
 print(table.num_rows)
 print(table.schema)
 ```

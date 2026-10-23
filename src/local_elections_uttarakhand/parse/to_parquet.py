@@ -12,6 +12,8 @@ import pyarrow.parquet as pq
 
 ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data"
+RAW = DATA / "raw" / "secresult"
+RELEASE = DATA / "release"
 CONTRACTS = json.loads((ROOT / "schemas.json").read_text())
 
 
@@ -73,14 +75,14 @@ def write_atomic(path, table):
         temporary.unlink(missing_ok=True)
 
 
-def export(data, out, check=False):
+def export(raw=RAW, out=RELEASE, check=False):
     manifest = {
         "format_version": 1,
         "column_map_sha256": digest(ROOT / "schemas.json"),
         "files": [],
     }
     for name, contract in CONTRACTS.items():
-        source = data / name
+        source = raw / name
         table = read_source(source, contract)
         target = out / contract["output"]
         if check:
@@ -90,7 +92,7 @@ def export(data, out, check=False):
             write_atomic(target, table)
         manifest["files"].append(
             {
-                "file": target.name,
+                "file": f"release/{target.name}",
                 "source_csv": name,
                 "source_sha256": digest(source),
                 "sha256": digest(target),
@@ -102,7 +104,7 @@ def export(data, out, check=False):
             }
         )
         print(f"{target.name}: {table.num_rows:,} candidate records")
-    path = out / "MANIFEST.json"
+    path = DATA / "MANIFEST.json"
     if check:
         if json.loads(path.read_text()) != manifest:
             raise ValueError(f"{path}: source hashes or export metadata changed")
@@ -115,12 +117,12 @@ def export(data, out, check=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=DATA)
-    parser.add_argument("--out", type=Path)
+    parser.add_argument("--raw", type=Path, default=RAW)
+    parser.add_argument("--out", type=Path, default=RELEASE)
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
     try:
-        export(args.data, args.out or args.data / "fin", args.check)
+        export(args.raw, args.out, args.check)
     except (ValueError, OSError) as exc:
         parser.exit(1, f"{exc}\n")
 

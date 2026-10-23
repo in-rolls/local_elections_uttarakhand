@@ -8,7 +8,7 @@ from local_elections_uttarakhand.parse.to_parquet import DATA, ROOT, export
 
 
 def data_summary():
-    manifest = json.loads((DATA / "fin/MANIFEST.json").read_text())
+    manifest = json.loads((DATA / "MANIFEST.json").read_text())
     lines = [
         "<!-- datasets:start -->",
         "",
@@ -25,8 +25,7 @@ def data_summary():
             else "Urban local-body"
         )
         lines.append(
-            f"| [fin/{name}](data/fin/{name}) | {entry['rows']:,} | "
-            f"{kind} candidate record |"
+            f"| [{name}](data/{name}) | {entry['rows']:,} | {kind} candidate record |"
         )
     lines.extend(["", "<!-- datasets:end -->"])
     path = ROOT / "README.md"
@@ -42,7 +41,7 @@ def main():
     parser.add_argument("command", choices=["verify", "summary"])
     args = parser.parse_args()
     if args.command == "verify":
-        export(DATA, DATA / "fin", check=True)
+        export(check=True)
     else:
         data_summary()
 

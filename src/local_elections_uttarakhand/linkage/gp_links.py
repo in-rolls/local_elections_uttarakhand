@@ -7,7 +7,7 @@ one-to-one by preclink's Hungarian assignment.
 
 2014 prints a serial before every name ("103-अजोलीमल्ली"); it is a list position,
 not part of the name, and is removed. Kumaon and Garhwal names distinguish
-neighboring villages by position (मल्ला upper, बिचला middle, तल्ला lower, often
+neighbouring villages by position (मल्ला upper, बिचला middle, तल्ला lower, often
 abbreviated म0, त0), twins by खुर्द/कलां, and parts by number (नं0-2). These
 are read off the name and veto a pair whose counterpart states a different one.
 
